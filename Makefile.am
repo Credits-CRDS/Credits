@@ -209,7 +209,7 @@ cov: test_credits.coverage/.dirstamp total.coverage/.dirstamp
 endif
 
 # Credits: disable the test until upstream switches from convoluted comparison tool
-# Ref https://github.com/credits/credits/issues/4545
+# Ref https://github.com/bitcoin/bitcoin/issues/4545
 if USE_COMPARISON_TOOL
 check-local:
 	## $(MKDIR_P) qa/tmp
