@@ -94,7 +94,7 @@ def get_bcaddress_version(strAddress):
     return ord(version)
 
 if __name__ == '__main__':
-    assert get_bcaddress_version('D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf') is 0
+    assert get_bcaddress_version('C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf') is 0
     _ohai = 'o hai'.encode('ascii')
     _tmp = b58encode(_ohai)
     assert _tmp == 'DYB3oMS'

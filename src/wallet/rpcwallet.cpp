@@ -268,8 +268,8 @@ UniValue setaccount(const UniValue& params, bool fHelp)
             "1. \"creditsaddress\"  (string, required) The credits address to be associated with an account.\n"
             "2. \"account\"         (string, required) The account to assign the address to.\n"
             "\nExamples:\n"
-            + HelpExampleCli("setaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"tabby\"")
-            + HelpExampleRpc("setaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", \"tabby\"")
+            + HelpExampleCli("setaccount", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"tabby\"")
+            + HelpExampleRpc("setaccount", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", \"tabby\"")
         );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -315,8 +315,8 @@ UniValue getaccount(const UniValue& params, bool fHelp)
             "\nResult:\n"
             "\"accountname\"        (string) the account address\n"
             "\nExamples:\n"
-            + HelpExampleCli("getaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"")
-            + HelpExampleRpc("getaccount", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"")
+            + HelpExampleCli("getaccount", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"")
+            + HelpExampleRpc("getaccount", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"")
         );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -427,10 +427,10 @@ UniValue sendtoaddress(const UniValue& params, bool fHelp)
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n"
-            + HelpExampleCli("sendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1")
-            + HelpExampleCli("sendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"donation\" \"seans outpost\"")
-            + HelpExampleCli("sendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"\" \"\" true")
-            + HelpExampleRpc("sendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 0.1, \"donation\", \"seans outpost\"")
+            + HelpExampleCli("sendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1")
+            + HelpExampleCli("sendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"donation\" \"seans outpost\"")
+            + HelpExampleCli("sendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"\" \"\" true")
+            + HelpExampleRpc("sendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 0.1, \"donation\", \"seans outpost\"")
         );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -492,10 +492,10 @@ UniValue instantsendtoaddress(const UniValue& params, bool fHelp)
             "\nResult:\n"
             "\"transactionid\"  (string) The transaction id.\n"
             "\nExamples:\n"
-            + HelpExampleCli("instantsendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1")
-            + HelpExampleCli("instantsendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"donation\" \"seans outpost\"")
-            + HelpExampleCli("instantsendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"\" \"\" true")
-            + HelpExampleRpc("instantsendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 0.1, \"donation\", \"seans outpost\"")
+            + HelpExampleCli("instantsendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1")
+            + HelpExampleCli("instantsendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"donation\" \"seans outpost\"")
+            + HelpExampleCli("instantsendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.1 \"\" \"\" true")
+            + HelpExampleRpc("instantsendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 0.1, \"donation\", \"seans outpost\"")
         );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -597,11 +597,11 @@ UniValue signmessage(const UniValue& params, bool fHelp)
             "\nUnlock the wallet for 30 seconds\n"
             + HelpExampleCli("walletpassphrase", "\"mypassphrase\" 30") +
             "\nCreate the signature\n"
-            + HelpExampleCli("signmessage", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"my message\"") +
+            + HelpExampleCli("signmessage", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"my message\"") +
             "\nVerify the signature\n"
-            + HelpExampleCli("verifymessage", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"signature\" \"my message\"") +
+            + HelpExampleCli("verifymessage", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" \"signature\" \"my message\"") +
             "\nAs json rpc\n"
-            + HelpExampleRpc("signmessage", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", \"my message\"")
+            + HelpExampleRpc("signmessage", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", \"my message\"")
         );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -650,13 +650,13 @@ UniValue getreceivedbyaddress(const UniValue& params, bool fHelp)
             "amount   (numeric) The total amount in " + CURRENCY_UNIT + " received at this address.\n"
             "\nExamples:\n"
             "\nThe amount from transactions with at least 1 confirmation\n"
-            + HelpExampleCli("getreceivedbyaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"") +
+            + HelpExampleCli("getreceivedbyaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\"") +
             "\nThe amount including unconfirmed transactions, zero confirmations\n"
-            + HelpExampleCli("getreceivedbyaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0") +
+            + HelpExampleCli("getreceivedbyaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0") +
             "\nThe amount with at least 10 confirmation, very safe\n"
-            + HelpExampleCli("getreceivedbyaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 10") +
+            + HelpExampleCli("getreceivedbyaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 10") +
             "\nAs a json rpc call\n"
-            + HelpExampleRpc("getreceivedbyaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 10")
+            + HelpExampleRpc("getreceivedbyaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 10")
        );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -936,11 +936,11 @@ UniValue sendfrom(const UniValue& params, bool fHelp)
             "\"transactionid\"        (string) The transaction id.\n"
             "\nExamples:\n"
             "\nSend 0.01 " + CURRENCY_UNIT + " from the default account to the address, must have at least 1 confirmation\n"
-            + HelpExampleCli("sendfrom", "\"\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.01") +
+            + HelpExampleCli("sendfrom", "\"\" \"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.01") +
             "\nSend 0.01 from the tabby account to the given address, funds must have at least 10 confirmations\n"
-            + HelpExampleCli("sendfrom", "\"tabby\" \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.01 10 \"donation\" \"seans outpost\"") +
+            + HelpExampleCli("sendfrom", "\"tabby\" \"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 0.01 10 \"donation\" \"seans outpost\"") +
             "\nAs a json rpc call\n"
-            + HelpExampleRpc("sendfrom", "\"tabby\", \"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 0.01, 10, \"donation\", \"seans outpost\"")
+            + HelpExampleRpc("sendfrom", "\"tabby\", \"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\", 0.01, 10, \"donation\", \"seans outpost\"")
         );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -1010,11 +1010,11 @@ UniValue sendmany(const UniValue& params, bool fHelp)
             "                                    the number of addresses.\n"
             "\nExamples:\n"
             "\nSend two amounts to two different addresses:\n"
-            + HelpExampleCli("sendmany", "\"tabby\" \"{\\\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.01,\\\"D1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.02}\"") +
+            + HelpExampleCli("sendmany", "\"tabby\" \"{\\\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.01,\\\"C1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.02}\"") +
             "\nSend two amounts to two different addresses setting the confirmation and comment:\n"
-            + HelpExampleCli("sendmany", "\"tabby\" \"{\\\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.01,\\\"D1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.02}\" 10 \"testing\"") +
+            + HelpExampleCli("sendmany", "\"tabby\" \"{\\\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.01,\\\"C1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.02}\" 10 \"testing\"") +
             "\nAs a json rpc call\n"
-            + HelpExampleRpc("sendmany", "\"tabby\", \"{\\\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.01,\\\"D1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.02}\", 10, \"testing\"")
+            + HelpExampleRpc("sendmany", "\"tabby\", \"{\\\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.01,\\\"C1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\":0.02}\", 10, \"testing\"")
         );
 
     LOCK2(cs_main, pwalletMain->cs_wallet);
@@ -2085,7 +2085,7 @@ UniValue walletlock(const UniValue& params, bool fHelp)
             "\nSet the passphrase for 2 minutes to perform a transaction\n"
             + HelpExampleCli("walletpassphrase", "\"my pass phrase\" 120") +
             "\nPerform a send (requires passphrase set)\n"
-            + HelpExampleCli("sendtoaddress", "\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 1.0") +
+            + HelpExampleCli("sendtoaddress", "\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\" 1.0") +
             "\nClear the passphrase since we are done before 2 minutes is up\n"
             + HelpExampleCli("walletlock", "") +
             "\nAs json rpc call\n"
@@ -2520,8 +2520,8 @@ UniValue listunspent(const UniValue& params, bool fHelp)
 
             "\nExamples\n"
             + HelpExampleCli("listunspent", "")
-            + HelpExampleCli("listunspent", "10 9999999 \"[\\\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\",\\\"D1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\"]\"")
-            + HelpExampleRpc("listunspent", "10, 9999999 \"[\\\"D5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\",\\\"D1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\"]\"")
+            + HelpExampleCli("listunspent", "10 9999999 \"[\\\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\",\\\"C1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\"]\"")
+            + HelpExampleRpc("listunspent", "10, 9999999 \"[\\\"C5nRy9Tf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\",\\\"C1MfcDTf7Zsef8gMGL2fhWA9ZslrP4K5tf\\\"]\"")
         );
 
     RPCTypeCheck(params, boost::assign::list_of(UniValue::VNUM)(UniValue::VNUM)(UniValue::VARR));
