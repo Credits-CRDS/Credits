@@ -27,15 +27,16 @@ const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex)
 
 unsigned int GetNextWorkRequired(const CBlockIndex* pindexLast, const CBlockHeader *pblock, const Consensus::Params& params)
 {
-    return DeriveNextWorkRequired(pindexLast, pblock, NULL, params);
+    return DeriveNextWorkRequired(pindexLast, pblock, params);
 }
 
 unsigned int DeriveNextWorkRequired(const INDEX_TYPE pindexLast, const BLOCK_TYPE block,
-                                    unsigned int initalBlock, const Consensus::Params& params)
+                                    const Consensus::Params& params)
 {
     int64_t nRetargetTimespan = params.nPowTargetSpacing;
     const unsigned int nProofOfWorkLimit = UintToArith256(params.powLimit).GetCompact();
 
+    unsigned int initalBlock = 0;
     const unsigned int nLastBlock = 1;
     const unsigned int nShortFrame = 3;
     const unsigned int nMiddleFrame = 24;
