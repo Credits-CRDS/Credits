@@ -564,8 +564,8 @@ static void WriteConfigFile(FILE* configFile)
     std::string sUserID = "rpcuser=" + GenerateRandomString(RandomIntegerRange(7, 11)) + "\n";
     fputs (sUserID.c_str(), configFile);
     fputs (sRPCpassword.c_str(), configFile);
-    fputs ("rpcport=31350\n", configFile);
-    fputs ("port=31300\n",configFile);
+    fputs ("rpcport=31050\n", configFile);
+    fputs ("port=31000\n",configFile);
     fclose(configFile);
     ReadConfigFile(mapArgs, mapMultiArgs);
 }

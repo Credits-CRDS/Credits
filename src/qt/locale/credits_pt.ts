@@ -3654,8 +3654,8 @@ https://www.transifex.com/projects/p/credits/</translation>
         <translation>Aviso: Por favor verifique que a data e a hora do computador está correcta! Se o relógio estiver errado o Credits não vai funcionar correctamente.</translation>
     </message>
     <message>
-        <source>(31300 could be used only on mainnet)</source>
-        <translation>(31300 apenas pode ser usado para mainnet)</translation>
+        <source>(31000 could be used only on mainnet)</source>
+        <translation>(31000 apenas pode ser usado para mainnet)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4064,8 +4064,8 @@ https://www.transifex.com/projects/p/credits/</translation>
         <translation>masternodeprivkey inválida. Por favor reveja a documentação.</translation>
     </message>
     <message>
-        <source>(must be 31300 for mainnet)</source>
-        <translation>(deve ser 31300 para mainnet)</translation>
+        <source>(must be 31000 for mainnet)</source>
+        <translation>(deve ser 31000 para mainnet)</translation>
     </message>
     <message>
         <source>Can't find random Masternode.</source>

@@ -151,12 +151,12 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x3f;
-        pchMessageStart[1] = 0x42;
-        pchMessageStart[2] = 0x55;
-        pchMessageStart[3] = 0x61;
+        pchMessageStart[0] = 0x2f;
+        pchMessageStart[1] = 0x32;
+        pchMessageStart[2] = 0x45;
+        pchMessageStart[3] = 0x51;
         vAlertPubKey = ParseHex("");
-        nDefaultPort = 31300;
+        nDefaultPort = 31000;
         nMaxTipAge = 24 * 60 * 64;
         nPruneAfterHeight = 20545;
         startNewChain = false;
@@ -293,10 +293,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1489831800; // Mar 18th 2017 10:10:00
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1489827458; // Mar 18th 2018 12:00:00
 
-        pchMessageStart[0] = 0x2f;
-        pchMessageStart[1] = 0x32;
-        pchMessageStart[2] = 0x15;
-        pchMessageStart[3] = 0x40;
+        pchMessageStart[0] = 0x1f;
+        pchMessageStart[1] = 0x22;
+        pchMessageStart[2] = 0x05;
+        pchMessageStart[3] = 0x30;
         vAlertPubKey = ParseHex("");
         nDefaultPort = 31400;
         nMaxTipAge = 24 * 60 * 64;
@@ -431,10 +431,10 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 999999999999ULL;
 
-        pchMessageStart[0] = 0x2f;
-        pchMessageStart[1] = 0x32;
-        pchMessageStart[2] = 0x15;
-        pchMessageStart[3] = 0x3f;
+        pchMessageStart[0] = 0x1f;
+        pchMessageStart[1] = 0x22;
+        pchMessageStart[2] = 0x05;
+        pchMessageStart[3] = 0x2f;
         nMaxTipAge = 24 * 60 * 64;
         nDefaultPort = 31500;
         nPruneAfterHeight = 100;

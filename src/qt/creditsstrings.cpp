@@ -210,10 +210,10 @@ QT_TRANSLATE_NOOP("credits", ""
 QT_TRANSLATE_NOOP("credits", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("credits", "(31300 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("credits", "(31000 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("credits", "(default: %s)"),
 QT_TRANSLATE_NOOP("credits", "(default: 1)"),
-QT_TRANSLATE_NOOP("credits", "(must be 31300 for mainnet)"),
+QT_TRANSLATE_NOOP("credits", "(must be 31000 for mainnet)"),
 QT_TRANSLATE_NOOP("credits", "<category> can be:\n"),
 QT_TRANSLATE_NOOP("credits", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("credits", "Accept connections from outside (default: 1 if no -proxy or -connect)"),

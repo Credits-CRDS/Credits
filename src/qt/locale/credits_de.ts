@@ -3761,8 +3761,8 @@ zum Beispiel: alertnotify=echo %%s | mail -s \"CRDS Alert\" admin@foo.com</trans
         <translation>Erlaubte Gegenstellen können nicht wegen DoS ausgeschlossen werden und ihre Transaktionen werden immer weitergeleitet, sogar wenn sie schon im Memory-Pool sind. Dies ist z.B. für Gateways nützlich.</translation>
     </message>
     <message>
-        <source>(31300 could be used only on mainnet)</source>
-        <translation>(31300 kann nur im Standardnetz benutzt werden)</translation>
+        <source>(31000 could be used only on mainnet)</source>
+        <translation>(31000 kann nur im Standardnetz benutzt werden)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4180,8 +4180,8 @@ CRDS Core wird heruntergefahren.</translation>
         <translation>masternode-Geheimschlüssel (masternodeprivkey) ist ungültig. Siehe Dokumentation. </translation>
     </message>
     <message>
-        <source>(must be 31300 for mainnet)</source>
-        <translation>(muss für Standardnetz 31300 sein)</translation>
+        <source>(must be 31000 for mainnet)</source>
+        <translation>(muss für Standardnetz 31000 sein)</translation>
     </message>
     <message>
         <source>Can't find random masternode.</source>

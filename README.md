@@ -41,22 +41,22 @@ Credits implements Gavin Andresens signature cache optimisation from Bitcoin for
 Utilisation of InstantSend for near-instant transactions and PrivateSend for anonymous transactions.
 
 **MainNet Parameters**
-P2P Port = 31300
-RPC Port = 31350
-Masternodes = 31300
-Magic Bytes: 0x3f 0x42 0x55 0x61
+P2P Port = 31000
+RPC Port = 31050
+Masternodes = 31000
+Magic Bytes: 0x2f 0x32 0x45 0x51
 
 **TestNet Parameters**
 P2P Port = 31400
 RPC Port = 31450
 Masternodes = 31400
-Magic Bytes: 0x2f 0x32 0x15 0x40
+Magic Bytes: 0x1f 0x22 0x05 0x30
 
 **RegTest Parameters**
 P2P Port = 31500
 RPC Port = 31550
 Masternodes = 31500
-Magic Bytes = 0x2f 0x32 0x15 0x3f
+Magic Bytes = 0x1f 0x22 0x05 0x2f
 
 **Rewards Structure**
 
