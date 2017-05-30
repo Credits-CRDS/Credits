@@ -61,6 +61,7 @@ Magic Bytes = 0x1f 0x22 0x05 0x2f
 **Rewards Structure**
 
 Years|      Blocks        |   PoW  | MNodes |
+-----|--------------------|--------|--------|
   1  |       0 -  246544  | 10CRDS |  1CRDS |
   2  |  246545 -  493088  | 10CRDS |  1CRDS |
   3  |  493089 -  739631  |  9CRDS |  2CRDS |
