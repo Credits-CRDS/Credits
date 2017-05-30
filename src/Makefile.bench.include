@@ -1,0 +1,46 @@
+bin_PROGRAMS += bench/bench_credits
+BENCH_SRCDIR = bench
+BENCH_BINARY = bench/bench_credits$(EXEEXT)
+
+
+bench_bench_credits_SOURCES = \
+  bench/bench_credits.cpp \
+  bench/bench.cpp \
+  bench/bench.h \
+  bench/Examples.cpp \
+  bench/lockedpool.cpp
+
+bench_bench_credits_CPPFLAGS = $(AM_CPPFLAGS) $(CREDITS_INCLUDES) $(EVENT_CLFAGS) $(EVENT_PTHREADS_CFLAGS) -I$(builddir)/bench/
+bench_bench_credits_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
+bench_bench_credits_LDADD = \
+  $(LIBCREDITS_SERVER) \
+  $(LIBCREDITS_COMMON) \
+  $(LIBCREDITS_UNIVALUE) \
+  $(LIBCREDITS_UTIL) \
+  $(LIBCREDITS_CRYPTO) \
+  $(LIBLEVELDB) \
+  $(LIBMEMENV) \
+  $(LIBSECP256K1)
+
+if ENABLE_ZMQ
+bench_bench_credits_LDADD += $(LIBCREDITS_ZMQ) $(ZMQ_LIBS)
+endif
+
+if ENABLE_WALLET
+bench_bench_credits_LDADD += $(LIBCREDITS_WALLET)
+endif
+
+bench_bench_credits_LDADD += $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+bench_bench_credits_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+
+CLEAN_CREDITS_BENCH = bench/*.gcda bench/*.gcno
+
+CLEANFILES += $(CLEAN_CREDITS_BENCH)
+
+credits_bench: $(BENCH_BINARY)
+
+bench: $(BENCH_BINARY) FORCE
+	$(BENCH_BINARY)
+
+credits_bench_clean : FORCE
+	rm -f $(CLEAN_CREDITS_BENCH) $(bench_bench_credits_OBJECTS) $(BENCH_BINARY)

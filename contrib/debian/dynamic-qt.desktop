@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Credits
+Comment=Credits P2P Cryptocurrency
+Comment[fr]=Credits, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Credits, eşten eşe kriptografik sanal para birimi
+Exec=credits-qt %u
+Terminal=false
+Type=Application
+Icon=credits128
+MimeType=x-scheme-handler/credits;
+Categories=Office;Finance;

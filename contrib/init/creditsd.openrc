@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/credits/.credits" ]; then
+	CREDITSD_DEFAULT_DATADIR="/var/lib/credits/.credits"
+else
+	CREDITSD_DEFAULT_DATADIR="/var/lib/creditsd"
+fi
+
+CREDITSD_CONFIGFILE=${CREDITSD_CONFIGFILE:-/etc/credits/credits.conf}
+CREDITSD_PIDDIR=${CREDITSD_PIDDIR:-/var/run/creditsd}
+CREDITSD_PIDFILE=${CREDITSD_PIDFILE:-${CREDITSD_PIDDIR}/creditsd.pid}
+CREDITSD_DATADIR=${CREDITSD_DATADIR:-${CREDITSD_DEFAULT_DATADIR}}
+CREDITSD_USER=${CREDITSD_USER:-${CREDITS_USER:-credits}}
+CREDITSD_GROUP=${CREDITSD_GROUP:-credits}
+CREDITSD_BIN=${CREDITSD_BIN:-/usr/bin/creditsd}
+CREDITSD_NICE=${CREDITSD_NICE:-${NICELEVEL:-0}}
+CREDITSD_OPTS="${CREDITSD_OPTS:-${CREDITS_OPTS}}"
+
+name="Credits Daemon"
+description="Credits cryptocurrency P2P network daemon"
+
+command="/usr/bin/creditsd"
+command_args="-pid=\"${CREDITSD_PIDFILE}\" \
+		-conf=\"${CREDITSD_CONFIGFILE}\" \
+		-datadir=\"${CREDITSD_DATADIR}\" \
+		-daemon \
+		${CREDITSD_OPTS}"
+
+required_files="${CREDITSD_CONFIGFILE}"
+start_stop_daemon_args="-u ${CREDITSD_USER} \
+			-N ${CREDITSD_NICE} -w 2000"
+pidfile="${CREDITSD_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${CREDITSD_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${CREDITSD_USER}:${CREDITSD_GROUP}" \
+	"${CREDITSD_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${CREDITSD_USER}:${CREDITSD_GROUP}" \
+	"${CREDITSD_PIDDIR}"
+
+	checkpath -f \
+	-o ${CREDITSD_USER}:${CREDITSD_GROUP} \
+	-m 0660 \
+	${CREDITSD_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${CREDITSD_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run creditsd."
+		eerror "The setting must appear in ${CREDITSD_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following"
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is also recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Credits Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}
