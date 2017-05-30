@@ -21,13 +21,11 @@ What is Credits?
 * PoW Difficulty Algorithm: DELTA
 * PoW Period: ~35 years
 * PoW Target Spacing: 128 Seconds
-* PoW Reward Start Height: Block 10,000
 * PoW Reward per Block: 1 CRDS
 * Maturity: 10 Blocks
 * PoW Blocks: ~675 per day
 * Masternode Collateral Amount: 500 CRDS
 * Masternode Min Confirmation: 10 Blocks
-* Masternode Reward Start Height: Block 10,000
 * Masternode Reward: See Below
 * Total Coins: 95,000,000 (~36 Years)
 * Min TX Fee: 0.0001 CRDS
@@ -63,7 +61,6 @@ Magic Bytes = 0x2f 0x32 0x15 0x3f
 **Rewards Structure**
 
 Years|      Blocks        |   PoW  | MNodes |
----------------------------------------------
   1  |       0 -  246544  | 10CRDS |  1CRDS |
   2  |  246545 -  493088  | 10CRDS |  1CRDS |
   3  |  493089 -  739631  |  9CRDS |  2CRDS |
