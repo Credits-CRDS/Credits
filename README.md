@@ -19,7 +19,7 @@ What is Credits?
 * Coin Suffix: CRDS
 * PoW Mining Algorithm: Argon2d
 * PoW Difficulty Algorithm: DELTA
-* PoW Period: ~35 years
+* PoW Period: ~36 years
 * PoW Target Spacing: 128 Seconds
 * PoW Reward per Block: 1 CRDS
 * Maturity: 10 Blocks
