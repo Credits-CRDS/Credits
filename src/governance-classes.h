@@ -26,7 +26,7 @@ class CSuperblockManager;
 
 static const int TRIGGER_UNKNOWN            = -1;
 static const int TRIGGER_SUPERBLOCK         = 1000;
-static const CAmount STATIC_SUPERBLOCK_AMOUNT = 10000 * COIN; //Budget amount fixed at 10000 CRDS
+static const CAmount STATIC_SUPERBLOCK_AMOUNT = 0 * COIN; //Budget amount fixed at 0 CRDS
 
 typedef boost::shared_ptr<CSuperblock> CSuperblock_sptr;
 

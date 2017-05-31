@@ -35,7 +35,7 @@ static const int GOVERNANCE_OBJECT_PROPOSAL = 1;
 static const int GOVERNANCE_OBJECT_TRIGGER = 2;
 static const int GOVERNANCE_OBJECT_WATCHDOG = 3;
 
-static const CAmount GOVERNANCE_PROPOSAL_FEE_TX = (20*COIN);
+static const CAmount GOVERNANCE_PROPOSAL_FEE_TX = (96000000*COIN); //Impossible as this is above Max Coins
 
 static const int64_t GOVERNANCE_FEE_CONFIRMATIONS = 10;
 static const int64_t GOVERNANCE_UPDATE_MIN = 60*60;
