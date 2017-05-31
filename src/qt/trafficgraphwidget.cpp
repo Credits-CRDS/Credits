@@ -79,7 +79,7 @@ namespace
 void TrafficGraphWidget::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
-    painter.fillRect(rect(), Qt::black);
+    painter.fillRect(rect(), Qt::white);
 
     if(fMax <= 0.0f) return;
 
