@@ -4421,7 +4421,7 @@ QSlider::sub-page:horizontal {
 background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
     stop: 0 #4B96C8, stop: 1 #4282AE);
 background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-    stop: 0 #66008e, stop: 1 #7f00b1);
+    stop: 0 #4282AE, stop: 1 #548EB6);
 border: 1px solid #777;
 height: 10px;
 border-radius: 4px;
