@@ -1,7 +1,7 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 [![Build Status](https://travis-ci.org/Credits-CRDS/Credits.png?branch=master)](https://travis-ci.org/Credits-CRDS/Credits)
-[![Stories in Ready](https://badge.waffle.io/Credits-CRDS/Credits.png?label=ready&title=Ready)](https://waffle.io/Credit-CRDS/Credits)
+[![Stories in Ready](https://badge.waffle.io/Credits-CRDS/Credits.png?label=ready&title=Ready)](https://waffle.io/Credits-CRDS/Credits)
 
 Graph on Pull Request History
 ====================================
@@ -19,23 +19,20 @@ What is Credits?
 * Coin Suffix: CRDS
 * PoW Mining Algorithm: Argon2d
 * PoW Difficulty Algorithm: DELTA
-* PoW Period: ~35 years
+* PoW Period: ~36 years
 * PoW Target Spacing: 128 Seconds
-* PoW Reward Start Height: Block 10,000
 * PoW Reward per Block: 1 CRDS
 * Maturity: 10 Blocks
 * PoW Blocks: ~675 per day
 * Masternode Collateral Amount: 500 CRDS
 * Masternode Min Confirmation: 10 Blocks
-* Masternode Reward Start Height: Block 10,000
 * Masternode Reward: See Below
-* Total Coins: 95,000,000
+* Total Coins: 95,000,000 (~36 Years)
 * Min TX Fee: 0.0001 CRDS
-
 
 Credits uses peer-to-peer technology to operate securly with no central authority (decentralisation): managing transactions and issuing currency (CRDS) are carried out collectively by the Credits network. Credits is the name of open source software which enables the use of the currency CRDS.
 
-Credits utilises Maternodes, Privatesend and InstantSend to provide anonymous and near instant transaction confirmations.
+Credits utilises Masternodes, Privatesend and InstantSend to provide anonymous and near instant transaction confirmations.
 
 Credits implements Gavin Andresens signature cache optimisation from Bitcoin for significantly faster transaction validation.
 
@@ -47,20 +44,59 @@ Utilisation of InstantSend for near-instant transactions and PrivateSend for ano
 P2P Port = 31000
 RPC Port = 31050
 Masternodes = 31000
-Magic Bytes: 0x3f 0x42 0x55 0x61
+Magic Bytes: 0x2f 0x32 0x45 0x51
 
 **TestNet Parameters**
 P2P Port = 31400
 RPC Port = 31450
 Masternodes = 31400
-Magic Bytes: 0x2f 0x32 0x15 0x40
+Magic Bytes: 0x1f 0x22 0x05 0x30
 
 **RegTest Parameters**
 P2P Port = 31500
 RPC Port = 31550
 Masternodes = 31500
-Magic Bytes = 0x2f 0x32 0x15 0x3f
+Magic Bytes = 0x1f 0x22 0x05 0x2f
 
+**Rewards Structure**
+
+ Years|      Blocks        |   PoW  | Masternodes |
+------|--------------------|--------|-------------|
+ 0-1  |       0 -  246544  | 10CRDS |    1CRDS    |
+ 1-2  |  246545 -  493088  | 10CRDS |    1CRDS    |
+ 2-3  |  493089 -  739631  |  9CRDS |    2CRDS    |
+ 3-4  |  739632 -  986175  |  9CRDS |    2CRDS    |
+ 4-5  |  986176 - 1232719  |  8CRDS |    3CRDS    |
+ 5-6  | 1232720 - 1479263  |  8CRDS |    3CRDS    |
+ 6-7  | 1479264 - 1725806  |  7CRDS |    4CRDS    |
+ 7-8  | 1725807 - 1972350  |  7CRDS |    4CRDS    |
+ 8-9  | 1972351 - 2218894  |  6CRDS |    5CRDS    |
+ 9-10 | 2218895 - 2465438  |  6CRDS |    5CRDS    |
+10-11 | 2465439 - 2711981  |  5CRDS |    6CRDS    |
+11-12 | 2711982 - 2958525  |  5CRDS |    6CRDS    |
+12-13 | 2958526 - 3205069  |  4CRDS |    7CRDS    |
+13-14 | 3205070 - 3451613  |  3CRDS |    7CRDS    |
+14-15 | 3451614 - 3698156  |  3CRDS |    8CRDS    |
+15-16 | 3698156 - 3944700  |  2CRDS |    8CRDS    |
+16-17 | 3944701 - 4191244  |  2CRDS |    9CRDS    |
+17-18 | 4191245 - 4437788  |  1CRDS |    9CRDS    |
+18-19 | 4437789 - 4684331  |  1CRDS |   10CRDS    |
+19-20 | 4684332 - 4930875  |  1CRDS |   10CRDS    |
+20-21 | 4930876 - 5177419  |  1CRDS |   10CRDS    |
+21-22 | 5177420 - 5423963  |  1CRDS |   10CRDS    |
+22-23 | 5423964 - 5670506  |  1CRDS |   10CRDS    |
+23-24 | 5670507 - 5917050  |  1CRDS |   10CRDS    |
+24-25 | 5917051 - 6163594  |  1CRDS |   10CRDS    |
+25-26 | 6163595 - 6410138  |  1CRDS |   10CRDS    |
+26-27 | 6410139 - 6656681  |  1CRDS |   10CRDS    |
+27-28 | 6656682 - 6903225  |  1CRDS |   10CRDS    |
+28-30 | 6903226 - 7149769  |  1CRDS |   10CRDS    |   
+30-31 | 7149770 - 7396313  |  1CRDS |   10CRDS    |
+31-32 | 7396314 - 7642856  |  1CRDS |   10CRDS    |
+32-33 | 7642857 - 7889400  |  1CRDS |   10CRDS    |
+33-34 | 7889401 - 8135944  |  1CRDS |   10CRDS    |
+34-35 | 8135945 - 8382488  |  1CRDS |   10CRDS    |
+35-36 | 8382489 - 8629031  |  1CRDS |   10CRDS    |
 
 UNIX BUILD NOTES
 ====================
@@ -97,7 +133,8 @@ These dependencies are required:
  ------------|------------------|----------------------
  libssl      | SSL Support      | Secure communications
  libboost    | Boost            | C++ Library
- libevent    | Networking   | OS independent asynchronous networking
+ libevent    | Networking       | OS independent asynchronous networking
+ 
 Optional dependencies:
 
  Library     | Purpose          | Description
@@ -121,7 +158,7 @@ Dependency Build Instructions: Ubuntu & Debian
 ----------------------------------------------
 Build requirements:
 
-    sudo apt-get install build-essential libtool autotools-dev autoconf pkg-config libssl-dev libcrypto++-dev libevent-dev git
+    sudo apt-get install build-essential libtool automake autotools-dev autoconf pkg-config libssl-dev libcrypto++-dev libevent-dev git
     
 for Ubuntu 12.04 and later or Debian 7 and later libboost-all-dev has to be installed:
 
@@ -301,6 +338,29 @@ In this case there is no dependency on Berkeley DB 4.8.
 
 Mining is also possible in disable-wallet mode, but only using the `getblocktemplate` RPC
 call not `getwork`.
+
+AVX2 Mining Optimisations
+-------------------------
+For increased performance when mining, AVX2 optimisations can be enabled. 
+
+Prior to running the build commands:
+
+    CPPFLAGS=-march=native
+    
+CPU's with AVX2 support:
+
+    Intel
+        Haswell processor, Q2 2013
+        Haswell E processor, Q3 2014
+        Broadwell processor, Q4 2014
+        Broadwell E processor, Q3 2016
+        Skylake processor, Q3 2015
+        Kaby Lake processor, Q3 2016(ULV mobile)/Q1 2017(desktop/mobile)
+        Coffee Lake processor, expected in 2017
+        Cannonlake processor, expected in 2017
+    AMD
+        Carrizo processor, Q2 2015
+        Ryzen processor, Q1 2017
 
 Example Build Command
 --------------------
