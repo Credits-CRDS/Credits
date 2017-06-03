@@ -25,7 +25,7 @@ What is Credits?
 * Maturity: 10 Blocks
 * PoW Blocks: ~675 per day
 * Masternode Collateral Amount: 500 CRDS
-* Masternode Min Confirmation: 10 Blocks
+* Masternode Min Confirmation: 16 Blocks
 * Masternode Reward: See Below
 * Total Coins: 95,000,000 (~36 Years)
 * Min TX Fee: 0.0001 CRDS
