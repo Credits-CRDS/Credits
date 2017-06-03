@@ -21,7 +21,7 @@ What is Credits?
 * PoW Difficulty Algorithm: DELTA
 * PoW Period: ~36 years
 * PoW Target Spacing: 128 Seconds
-* PoW Reward per Block: 1 CRDS
+* PoW Reward per Block: See Below
 * Maturity: 10 Blocks
 * PoW Blocks: ~675 per day
 * Masternode Collateral Amount: 500 CRDS
