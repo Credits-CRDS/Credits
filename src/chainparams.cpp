@@ -32,7 +32,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.nVersion = 1;
     txNew.vin.resize(1);
     txNew.vout.resize(1);
-    txNew.vin[0].scriptSig = CScript() << 0 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+    txNew.vin[0].scriptSig = CScript() << 1497704700 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey = genesisOutputScript;
 
@@ -99,7 +99,7 @@ static void MineGenesis(CBlockHeader& genesisBlock, const uint256& powLimit, boo
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "18th of June 2017: Credits(CRDS) Launched";
+    const char* pszTimestamp = "17th of June 2017: Credits(CRDS) Launched";
     const CScript genesisOutputScript = CScript() << ParseHex("") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -155,27 +155,27 @@ public:
         pchMessageStart[1] = 0x32;
         pchMessageStart[2] = 0x45;
         pchMessageStart[3] = 0x51;
-        vAlertPubKey = ParseHex("");
+        vAlertPubKey = ParseHex("04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32");
         nDefaultPort = 31000;
         nMaxTipAge = 24 * 60 * 60;
         nPruneAfterHeight = 20545;
         startNewChain = false;
 
-        genesis = CreateGenesisBlock(0, 0, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1497712544, 27540, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if(startNewChain == true) { MineGenesis(genesis, consensus.powLimit, true); }
 
         consensus.hashGenesisBlock = genesis.GetHash();
         		
         if(!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x"));
-            assert(genesis.hashMerkleRoot == uint256S("0x"));
+            assert(consensus.hashGenesisBlock == uint256S("0x0000dea5d2c92cf3f1dce5031cc2b368b2a5e3ebea73ea1278fef673d10b1345"));
+            assert(genesis.hashMerkleRoot == uint256S("0x1df9b425c9a06de51b3fb210ffd2e051e05718e264e8ee4692592746c1566a0c"));
 		}
 		
         /*
         vSeeds.push_back(CDNSSeedData("", ""));
-        vSeeds.push_back(CDNSSeedData("", ""));
-        vSeeds.push_back(CDNSSeedData("", ""));
-        vSeeds.push_back(CDNSSeedData("", ""));
+        vSeeds.push_back(CDNSSeedData("", "dyn.dnsseeder.com"));
+        vSeeds.push_back(CDNSSeedData("dnsseeder.host", "dyn.dnsseeder.host"));
+        vSeeds.push_back(CDNSSeedData("dnsseeder.net", "dyn.dnsseeder.net"));
         */
         
         // Credits addresses start with 'C'
@@ -201,13 +201,13 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60 * 60; // fulfilled requests expire in 1 hour
-        strSporkPubKey = "";
-        strMasternodePaymentsPubKey = "";
+        strSporkPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
+        strMasternodePaymentsPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("")),
-            0, // * UNIX timestamp of last checkpoint block
+            (  0, uint256S("0x0000dea5d2c92cf3f1dce5031cc2b368b2a5e3ebea73ea1278fef673d10b1345")),
+            1497712544, // * UNIX timestamp of last checkpoint block
             0,          // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             2000        // * estimated number of transactions per day after checkpoint
@@ -297,13 +297,13 @@ public:
         pchMessageStart[1] = 0x22;
         pchMessageStart[2] = 0x05;
         pchMessageStart[3] = 0x30;
-        vAlertPubKey = ParseHex("");
+        vAlertPubKey = ParseHex("04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32");
         nDefaultPort = 31400;
         nMaxTipAge = 24 * 60 * 64;
         nPruneAfterHeight = 100;
         startNewChain = false;
 
-        genesis = CreateGenesisBlock(0, 0, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1497712720, 4579, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if(startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -311,8 +311,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if(!startNewChain)
-            assert(consensus.hashGenesisBlock == uint256S("0x"));
-            assert(genesis.hashMerkleRoot == uint256S("0x"));
+            assert(consensus.hashGenesisBlock == uint256S("0x000d1affae588c5c766b2488fc9211801a6d53b06ec9bd8e237092798a4bb242"));
+            assert(genesis.hashMerkleRoot == uint256S("0x1df9b425c9a06de51b3fb210ffd2e051e05718e264e8ee4692592746c1566a0c"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -342,13 +342,13 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
-        strSporkPubKey = "";
-        strMasternodePaymentsPubKey = "";
+        strSporkPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
+        strMasternodePaymentsPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("")),
-            0, // * UNIX timestamp of last checkpoint block
+            (  0, uint256S("0x000d1affae588c5c766b2488fc9211801a6d53b06ec9bd8e237092798a4bb242")),
+            1497712720, // * UNIX timestamp of last checkpoint block
             0,    // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             1000        // * estimated number of transactions per day after checkpoint
@@ -440,7 +440,7 @@ public:
         nPruneAfterHeight = 100;
         startNewChain = false;
 
-        genesis = CreateGenesisBlock(0, 0, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1497712816, 40, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if(startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -448,8 +448,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if(!startNewChain)
-            assert(consensus.hashGenesisBlock == uint256S("0x"));
-            assert(genesis.hashMerkleRoot == uint256S("0x"));
+            assert(consensus.hashGenesisBlock == uint256S("0x0059cc0c9e478d929bf09cc1062f78cd0b335f8d2051adb83fec545e54c52bd2"));
+            assert(genesis.hashMerkleRoot == uint256S("0x1df9b425c9a06de51b3fb210ffd2e051e05718e264e8ee4692592746c1566a0c"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
@@ -463,8 +463,8 @@ public:
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0x")),
-            0, // * UNIX timestamp of last checkpoint block
+            (  0, uint256S("0x0059cc0c9e478d929bf09cc1062f78cd0b335f8d2051adb83fec545e54c52bd2")),
+            1497712816, // * UNIX timestamp of last checkpoint block
             0,    // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             500        // * estimated number of transactions per day after checkpoint
