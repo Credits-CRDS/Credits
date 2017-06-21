@@ -44,19 +44,19 @@ Utilisation of InstantSend for near-instant transactions and PrivateSend for ano
 P2P Port = 31000
 RPC Port = 31050
 Masternodes = 31000
-Magic Bytes: 0x2f 0x32 0x45 0x51
+Magic Bytes: 0x3f 0x42 0x55 0x61
 
 **TestNet Parameters**
 P2P Port = 31400
 RPC Port = 31450
 Masternodes = 31400
-Magic Bytes: 0x1f 0x22 0x05 0x30
+Magic Bytes: 0x2f 0x32 0x15 0x40
 
 **RegTest Parameters**
 P2P Port = 31500
 RPC Port = 31550
 Masternodes = 31500
-Magic Bytes = 0x1f 0x22 0x05 0x2f
+Magic Bytes = 0x2f 0x32 0x15 0x3f
 
 **Rewards Structure**
 
