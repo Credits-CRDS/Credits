@@ -272,9 +272,9 @@ inline int Argon2d_Phase1_Hash(const void *in, void *out) {
     context.free_cbk = NULL;
     context.flags = DEFAULT_ARGON2_FLAG; // = ARGON2_DEFAULT_FLAGS
     // main configurable Argon2 hash parameters
-    context.m_cost = 250; // Memory in KiB (~256KB)
-    context.lanes = 4;    // Degree of Parallelism
-    context.threads = 1;  // Threads
+    context.m_cost = 125; // Memory in KiB (~128KB)
+    context.lanes = 2;    // Degree of Parallelism
+    context.threads = 2;  // Threads
     context.t_cost = 1;   // Iterations
 
     return argon2_ctx(&context, Argon2_d);
