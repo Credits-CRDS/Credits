@@ -32,7 +32,7 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
     txNew.nVersion = 1;
     txNew.vin.resize(1);
     txNew.vout.resize(1);
-    txNew.vin[0].scriptSig = CScript() << 1497704700 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+    txNew.vin[0].scriptSig = CScript() << 1498046078 << CScriptNum(4) << std::vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
     txNew.vout[0].nValue = genesisReward;
     txNew.vout[0].scriptPubKey = genesisOutputScript;
 
@@ -99,7 +99,7 @@ static void MineGenesis(CBlockHeader& genesisBlock, const uint256& powLimit, boo
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "17th of June 2017: Credits(CRDS) Launched";
+    const char* pszTimestamp = "Credits(CRDS) Relaunched";
     const CScript genesisOutputScript = CScript() << ParseHex("") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
@@ -112,27 +112,23 @@ class CMainParams : public CChainParams {
 public:
     CMainParams() {
         strNetworkID = "main";
-        consensus.nMasternodePaymentsStartBlock = 100; // Masternode Payments begin on block 20546
+        consensus.nMasternodePaymentsStartBlock = 2000; // Masternode Payments begin on block 20546
         consensus.nInstantSendKeepLock = 24;
-        consensus.nBudgetPaymentsStartBlock = 20545; // actual historical value
-        consensus.nBudgetPaymentsCycleBlocks = 20545; //Blocks per month
+        consensus.nBudgetPaymentsStartBlock = 1000000; // actual historical value
+        consensus.nBudgetPaymentsCycleBlocks = 1000000; //Blocks per month
         consensus.nBudgetPaymentsWindowBlocks = 100;
         consensus.nBudgetProposalEstablishingTime = 24 * 60 * 60;
-        consensus.nSuperblockStartBlock = 20546;
-        consensus.nSuperblockCycle = 20545; // 675 (Blocks per day) x 365.25 (Days per Year) / 12 = 20545
+        consensus.nSuperblockStartBlock = 2000;
+        consensus.nSuperblockCycle = 1000000; // 675 (Blocks per day) x 365.25 (Days per Year) / 12 = 20545
         consensus.nGovernanceMinQuorum = 10;
         consensus.nGovernanceFilterElements = 20000;
         consensus.nMasternodeMinimumConfirmations = 15;
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
-        consensus.powLimit = uint256S("0000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Credits: 24 hours
         consensus.nPowTargetSpacing = 2 * 64; // Credits: 128 seconds
-        consensus.nPowMaxAdjustDown = 32; // Credits: 32% adjustment down
-        consensus.nPowMaxAdjustUp = 16; // Credits: 16% adjustment up
-		consensus.nPowAveragingWindow = 17;
-        assert(maxUint/UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
 		consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 321; // 95% of nMinerConfirmationWindow
@@ -143,39 +139,39 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1497694200; // June 17th 2017 10:10:00
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1529236800; // June 17th 2018 12:00:00
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1498039800; // June 21st 2017 10:10:00
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1529582400; // June 21st 2018 12:00:00
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 32-bit integer with any alignment.
          */
-        pchMessageStart[0] = 0x2f;
-        pchMessageStart[1] = 0x32;
-        pchMessageStart[2] = 0x45;
-        pchMessageStart[3] = 0x51;
-        vAlertPubKey = ParseHex("04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32");
+        pchMessageStart[0] = 0x3f;
+        pchMessageStart[1] = 0x42;
+        pchMessageStart[2] = 0x55;
+        pchMessageStart[3] = 0x61;
+        vAlertPubKey = ParseHex("");
         nDefaultPort = 31000;
         nMaxTipAge = 24 * 60 * 60;
-        nPruneAfterHeight = 20545;
+        nPruneAfterHeight = 2000;
         startNewChain = false;
 
-        genesis = CreateGenesisBlock(1497712544, 27540, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(0, 0, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if(startNewChain == true) { MineGenesis(genesis, consensus.powLimit, true); }
 
         consensus.hashGenesisBlock = genesis.GetHash();
         		
         if(!startNewChain) {
-            assert(consensus.hashGenesisBlock == uint256S("0x0000dea5d2c92cf3f1dce5031cc2b368b2a5e3ebea73ea1278fef673d10b1345"));
-            assert(genesis.hashMerkleRoot == uint256S("0x1df9b425c9a06de51b3fb210ffd2e051e05718e264e8ee4692592746c1566a0c"));
+            //assert(consensus.hashGenesisBlock == uint256S("0x"));
+            //assert(genesis.hashMerkleRoot == uint256S("0x"));
 		}
 		
         /*
         vSeeds.push_back(CDNSSeedData("", ""));
-        vSeeds.push_back(CDNSSeedData("", "dyn.dnsseeder.com"));
-        vSeeds.push_back(CDNSSeedData("dnsseeder.host", "dyn.dnsseeder.host"));
-        vSeeds.push_back(CDNSSeedData("dnsseeder.net", "dyn.dnsseeder.net"));
+        vSeeds.push_back(CDNSSeedData("", ""));
+        vSeeds.push_back(CDNSSeedData("", ""));
+        vSeeds.push_back(CDNSSeedData("", ""));
         */
         
         // Credits addresses start with 'C'
@@ -201,13 +197,13 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60 * 60; // fulfilled requests expire in 1 hour
-        strSporkPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
-        strMasternodePaymentsPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
+        strSporkPubKey = "";
+        strMasternodePaymentsPubKey = "";
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0x0000dea5d2c92cf3f1dce5031cc2b368b2a5e3ebea73ea1278fef673d10b1345")),
-            1497712544, // * UNIX timestamp of last checkpoint block
+            (  0, uint256S("0x")),
+            0, // * UNIX timestamp of last checkpoint block
             0,          // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             2000        // * estimated number of transactions per day after checkpoint
@@ -273,13 +269,9 @@ public:
         consensus.nMajorityEnforceBlockUpgrade = 510;
         consensus.nMajorityRejectBlockOutdated = 750;
         consensus.nMajorityWindow = 1000;
-        consensus.powLimit = uint256S("000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
-        consensus.nPowAveragingWindow = 17;
+        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Credits: 24 hours
         consensus.nPowTargetSpacing = 2 * 64; // Credits: 256 seconds
-        consensus.nPowMaxAdjustDown = 32; // Credits: 32% adjustment down
-        consensus.nPowMaxAdjustUp = 16; // Credits: 16% adjustment up
-        assert(maxUint/UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = false;
         consensus.nRuleChangeActivationThreshold = 254; // 75% of nMinerConfirmationWindow
@@ -290,20 +282,20 @@ public:
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1497694200; // June 17th 2017 10:10:00
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1529236800; // June 17th 2018 12:00:00
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1498039800; // June 21st 2017 10:10:00
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1529582400; // June 21st 2018 12:00:00
 
-        pchMessageStart[0] = 0x1f;
-        pchMessageStart[1] = 0x22;
-        pchMessageStart[2] = 0x05;
-        pchMessageStart[3] = 0x30;
-        vAlertPubKey = ParseHex("04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32");
+        pchMessageStart[0] = 0x2f;
+        pchMessageStart[1] = 0x32;
+        pchMessageStart[2] = 0x15;
+        pchMessageStart[3] = 0x40;
+        vAlertPubKey = ParseHex("");
         nDefaultPort = 31400;
         nMaxTipAge = 24 * 60 * 64;
         nPruneAfterHeight = 100;
         startNewChain = false;
 
-        genesis = CreateGenesisBlock(1497712720, 4579, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(1498050933, 485730, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if(startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -311,8 +303,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if(!startNewChain)
-            assert(consensus.hashGenesisBlock == uint256S("0x000d1affae588c5c766b2488fc9211801a6d53b06ec9bd8e237092798a4bb242"));
-            assert(genesis.hashMerkleRoot == uint256S("0x1df9b425c9a06de51b3fb210ffd2e051e05718e264e8ee4692592746c1566a0c"));
+            assert(consensus.hashGenesisBlock == uint256S("0x00000fdc5d65cf3f64ba21818d1a9b80c8075954a47230138d1c424f27d53b3f"));
+            assert(genesis.hashMerkleRoot == uint256S("0xa74cf2dafa732d158024abd6f5ac6e7a1cf585a5c86bacd9df0d185f199f3dc3"));
 
         vFixedSeeds.clear();
         vSeeds.clear();
@@ -342,13 +334,13 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
-        strSporkPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
-        strMasternodePaymentsPubKey = "04244e071357b9b970e501d45181797f1fd675f19c62fb92252d3a63e31c95f94b488d95e9704b6e2985d76a6b05b4f0fa4b22027e734064f86c63480a75965a32";
+        strSporkPubKey = "";
+        strMasternodePaymentsPubKey = "";
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0x000d1affae588c5c766b2488fc9211801a6d53b06ec9bd8e237092798a4bb242")),
-            1497712720, // * UNIX timestamp of last checkpoint block
+            (  0, uint256S("0x00000fdc5d65cf3f64ba21818d1a9b80c8075954a47230138d1c424f27d53b3f")),
+            1498050933, // * UNIX timestamp of last checkpoint block
             0,    // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             1000        // * estimated number of transactions per day after checkpoint
@@ -414,12 +406,9 @@ public:
         consensus.nMajorityEnforceBlockUpgrade = 750;
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
-        consensus.powLimit = uint256S("00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 24 * 60 * 60; // Credits: 24 hours
         consensus.nPowTargetSpacing = 2 * 64; // Credits: 256 seconds
-        consensus.nPowMaxAdjustDown = 32; // Credits: 32% adjustment down
-        consensus.nPowMaxAdjustUp = 16; // Credits: 16% adjustment up
-        assert(maxUint/UintToArith256(consensus.powLimit) >= consensus.nPowAveragingWindow);
         consensus.fPowAllowMinDifficultyBlocks = true;
         consensus.fPowNoRetargeting = true;
         consensus.nRuleChangeActivationThreshold = 254; // 75% of nMinerConfirmationWindow
@@ -431,16 +420,16 @@ public:
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 0;
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 999999999999ULL;
 
-        pchMessageStart[0] = 0x1f;
-        pchMessageStart[1] = 0x22;
-        pchMessageStart[2] = 0x05;
-        pchMessageStart[3] = 0x2f;
+        pchMessageStart[0] = 0x2f;
+        pchMessageStart[1] = 0x32;
+        pchMessageStart[2] = 0x15;
+        pchMessageStart[3] = 0x3f;
         nMaxTipAge = 24 * 60 * 64;
         nDefaultPort = 31500;
         nPruneAfterHeight = 100;
         startNewChain = false;
 
-        genesis = CreateGenesisBlock(1497712816, 40, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
+        genesis = CreateGenesisBlock(0, 0, UintToArith256(consensus.powLimit).GetCompact(), 1, (1 * COIN));
         if(startNewChain == true) {
             MineGenesis(genesis, consensus.powLimit, true);
         }
@@ -448,8 +437,8 @@ public:
         consensus.hashGenesisBlock = genesis.GetHash();
 
         if(!startNewChain)
-            assert(consensus.hashGenesisBlock == uint256S("0x0059cc0c9e478d929bf09cc1062f78cd0b335f8d2051adb83fec545e54c52bd2"));
-            assert(genesis.hashMerkleRoot == uint256S("0x1df9b425c9a06de51b3fb210ffd2e051e05718e264e8ee4692592746c1566a0c"));
+            //assert(consensus.hashGenesisBlock == uint256S("0x"));
+            //assert(genesis.hashMerkleRoot == uint256S("0x"));
 
         vFixedSeeds.clear(); //! Regtest mode doesn't have any fixed seeds.
         vSeeds.clear();  //! Regtest mode doesn't have any DNS seeds.
@@ -463,8 +452,8 @@ public:
         nFulfilledRequestExpireTime = 5 * 60; // fulfilled requests expire in 5 minutes
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
-            (  0, uint256S("0x0059cc0c9e478d929bf09cc1062f78cd0b335f8d2051adb83fec545e54c52bd2")),
-            1497712816, // * UNIX timestamp of last checkpoint block
+            (  0, uint256S("0x")),
+            0, // * UNIX timestamp of last checkpoint block
             0,    // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             500        // * estimated number of transactions per day after checkpoint
